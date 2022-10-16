@@ -1,0 +1,68 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item {% if active_tab == 'dashboard_tab' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'accounts:home' %}">
+          <i class="ti-shield menu-icon"></i>
+          <span class="menu-title">Dashboard</span>
+
+          
+        </a>
+      </li>
+     
+     
+
+      {% if request.user.roles_id == 1 %}
+      <li class="nav-item {% if active_tab == 'questionset_tab' %}active{% endif %}"> 
+        <a class="nav-link" href="{% url 'accounts:question_set' %}">
+          <i class="ti-layout-list-post menu-icon"></i>
+          <span class="menu-title">Add New QuestionSet</span>
+        </a>
+      </li>
+      <li class="nav-item {% if active_tab == 'questionset_view_tab' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'accounts:question_set_view' %}">
+          <i class="ti-layout-list-post menu-icon"></i>
+          <span class="menu-title">QuestionSet List</span>
+        </a>
+      </li>
+      <li class="nav-item {% if active_tab == 'question_add_tab' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'accounts:add_question' %}">
+          <i class="ti-pie-chart menu-icon"></i>
+          <span class="menu-title">Add New Question</span>
+        </a>
+      </li>
+
+      <li class="nav-item {% if active_tab == 'question_list' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'accounts:question_list' %}">
+          <i class="ti-pie-chart menu-icon"></i>
+          <span class="menu-title">Question List</span>
+        </a>
+      </li>
+
+      <li class="nav-item {% if active_tab == 'add_question_options' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'accounts:add_question_options' %}">
+          <i class="ti-pie-chart menu-icon"></i>
+          <span class="menu-title">Add New Question Options</span>
+        </a>
+      </li>
+
+      <li class="nav-item {% if active_tab == 'question_option_list' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'accounts:question_option_list' %}">
+          <i class="ti-pie-chart menu-icon"></i>
+          <span class="menu-title">Question Options List</span>
+        </a>
+      </li>
+
+      
+
+      <li class="nav-item {% if active_tab == 'users_view_tab' %}active{% endif %}">
+        <a class="nav-link" href="{% url 'accounts:users' %}">
+          <i class="ti-view-list-alt menu-icon"></i>
+          <span class="menu-title">User<span>
+        </a>
+      </li>
+      {% endif %}
+     
+     
+     
+    </ul>
+  </nav>

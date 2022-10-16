@@ -1,0 +1,48 @@
+{% include "accounts/dashboard/header.html" %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      {% include "accounts/dashboard/sidebar.html" with active_tab='add_question_options' %}
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+
+
+          <div class="row">
+            
+           
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Create a Question Option</h4>
+                  <p class="card-description">
+                    Question Option
+                  </p>
+                  {% include 'accounts/messages.html' %}
+                  <form method="POST" id="set-form" class="forms-sample">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                    {{ field.label }}
+                <div class="form-group">
+                    
+                    {{ field }}
+                </div>
+                {% endfor %}  
+                <input type="submit" name="submit" id="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="Submit"/>
+                    
+                  </form>
+                </div>
+              </div>
+            </div>
+           
+           
+          
+           
+          
+            
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        {% include "accounts/dashboard/footer.html" %}

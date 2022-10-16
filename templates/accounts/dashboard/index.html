@@ -1,0 +1,109 @@
+{% include "accounts/dashboard/header.html" %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      {% comment %} Sidebar {% endcomment %}
+      {% include "accounts/dashboard/sidebar.html" with active_tab='dashboard_tab' %}
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="row">
+            <div class="col-md-12 grid-margin">
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <h4 class="font-weight-bold mb-0">Attend Exam Dashboard</h4>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+          <div class="row">
+           
+
+         {% if request.user.roles_id == 1 %}
+         <div class="col-md-3 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title text-md-center text-xl-left">Users</p>
+              <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{user_count}}</h3>
+                <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+              </div>  
+             
+            </div>
+          </div>
+        </div>
+
+         <div class="col-md-3 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title text-md-center text-xl-left">QuestionSet</p>
+              <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{qs_set}}</h3>
+                <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+              </div>  
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title text-md-center text-xl-left">Questions</p>
+              <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{question_count}}</h3>
+                <i class="ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+              </div>  
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title text-md-center text-xl-left">Question Option</p>
+              <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">{{qs_option}}</h3>
+                <i class="ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+              </div>  
+              
+            </div>
+          </div>
+        </div>
+        {% else %}
+
+        {% if question_set_list %}
+
+        {% for row in question_set_list %}
+
+        <div class="col-md-3 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-title text-md-center text-xl-left" style="text-align: inherit!important;">Question Set : {{row.name}}</p>
+              <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                
+                <h4 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">Total Times : {{row.ideal_timeto_complete}} minutes</h4>
+                <a href="{% url 'accounts:exam_detail_page' row.id row.slug %}" class="btn btn-info" style="margin-top: 18px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;"> Start Exam</a>
+              </div>  
+              
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+         {% endif %}
+
+
+          </div>
+
+
+         
+          
+          
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        {% include "accounts/dashboard/footer.html" %}

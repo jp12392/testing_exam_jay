@@ -1,0 +1,87 @@
+{% include "accounts/dashboard/header.html" %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      {% include "accounts/dashboard/sidebar.html" with active_tab='questionset_view_tab' %}
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+
+
+          <div class="row">
+            
+           
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">QuestionSet List</h4>
+                    <p class="card-description">
+                        QuestionSet
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                              Name
+                            </th>
+                            <th>
+                            Enable negative marking
+                            </th>
+                            <th>
+                                Negative Marking Percentage
+                            </th>
+                            <th>
+                                Ideal_timeto_complete
+                            </th>
+                            <th>
+                                created_on
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% if question_set %}
+                        {% for row in question_set %}
+                        <tr>
+                            <td class="py-1">
+                              {{row.name}}
+                            </td>
+                            <td>
+                                {{row.enable_negative_marking}}
+                            </td>
+                            <td>
+                                {{row.negative_marking_percentage}}
+                            </td>
+                            <td>
+                                {{row.ideal_timeto_complete}}
+                            </td>
+                            <td>
+                                {{row.created_on}}
+                            </td>
+                          </tr>
+                          {% endfor %}
+                       
+                       
+                        {% endif %}
+                         
+                         
+                        </tbody>
+                        
+                      </table>
+                     
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+           
+          
+           
+          
+            
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        {% include "accounts/dashboard/footer.html" %}

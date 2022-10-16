@@ -1,0 +1,101 @@
+{% include "accounts/dashboard/header.html" %}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:../../partials/_sidebar.html -->
+      {% include "accounts/dashboard/sidebar.html" with active_tab='question_list' %}
+      <!-- partial -->
+      <div class="main-panel">        
+        <div class="content-wrapper">
+
+
+          <div class="row">
+            
+           
+            <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Question List</h4>
+                    <p class="card-description">
+                        Question
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>
+                                Question Set
+                               </th>
+                            <th>
+                             Question Name
+                            </th>
+                            <th>
+                                Question Image
+                            </th>
+                            <th>
+                                Question Type
+                            </th>
+                            <th>
+                                Order
+                            </th>
+                            <th>
+                                Marks
+                            </th>
+                           
+                            <th>
+                                Date
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% if question %}
+                        {% for row in question %}
+                        <tr>
+                            <td class="py-1">
+                              {{row.question_set}}
+                            </td>
+                            <td class="py-1">
+                                {{row.text}}
+                              </td>
+                            <td>
+                                {{row.image}}
+                            </td>
+                            <td>
+                                {{row.type}}
+                            </td>
+                            <td>
+                                {{row.order}}
+                            </td>
+                            <td>
+                                {{row.marks}}
+                            </td>
+                           
+                            <td>
+                                {{row.created_on}}
+                            </td>
+                          </tr>
+                          {% endfor %}
+                       
+                       
+                        {% endif %}
+                         
+                         
+                        </tbody>
+                        
+                      </table>
+                     
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+           
+           
+          
+           
+          
+            
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:../../partials/_footer.html -->
+        {% include "accounts/dashboard/footer.html" %}
